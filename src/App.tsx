@@ -20,9 +20,11 @@ function App() {
 	const [games, setGames] = useState<Game[]>([]);
 
 	useEffect(() => {
-		axios("http://localhost:3333/games").then((response) => {
-			setGames(response.data);
-		});
+		axios("https://nlw-esports-api-sigma.vercel.app/games").then(
+			(response) => {
+				setGames(response.data);
+			}
+		);
 	}, []);
 
 	return (
