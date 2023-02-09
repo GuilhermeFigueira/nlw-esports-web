@@ -26,32 +26,44 @@ function App() {
 	}, []);
 
 	return (
-		<div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
-			<img src={logoImg} alt="" />
-			<h1 className="text-6xl text-white font-black mt-20 text">
-				Seu{" "}
-				<span className="text-transparent text- bg-clip-text bg-gradient-to-r from-[#46baba] to-[#f4cf3a]">
-					duo
-				</span>{" "}
-				está aqui
+		<>
+			<h1 className="text-center font-semibold text-lg text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-sky-400">
+				Feito por{" "}
+				<a
+					href="https://github.com/guilhermefigueira"
+					target="_blank"
+					className="underline font-bold"
+				>
+					Guilherme Figueira
+				</a>
 			</h1>
-			<div className="grid grid-cols-6 gap-6 mt-16 ">
-				{games.map((games) => {
-					return (
-						<GameBanner
-							key={games.id}
-							title={games.title}
-							imgName={games.bannerUrl}
-							adsCount={games._count.ads}
-						/>
-					);
-				})}
+			<div className="max-w-[1344px] mx-auto flex flex-col items-center my-20">
+				<img src={logoImg} alt="" />
+				<h1 className="text-6xl text-white font-black mt-20 text">
+					Seu{" "}
+					<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#46baba] to-[#f4cf3a]">
+						duo
+					</span>{" "}
+					está aqui
+				</h1>
+				<div className="grid grid-cols-6 gap-6 mt-16 ">
+					{games.map((games) => {
+						return (
+							<GameBanner
+								key={games.id}
+								title={games.title}
+								imgName={games.bannerUrl}
+								adsCount={games._count.ads}
+							/>
+						);
+					})}
+				</div>
+				<Dialog.Root>
+					<CreateAdBanner />
+					<CreateAdModal />
+				</Dialog.Root>
 			</div>
-			<Dialog.Root>
-				<CreateAdBanner />
-				<CreateAdModal />
-			</Dialog.Root>
-		</div>
+		</>
 	);
 }
 
